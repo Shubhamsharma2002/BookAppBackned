@@ -6,6 +6,7 @@ import ApiError from "../Utils/ApiError.js";
 import jwt from "jsonwebtoken";
 import UserTokenModel from "../Models/UserToken.model.js";
 import nodemailer from "nodemailer";
+// rigestration controller
 export const createUser = async(req, res , next) =>{
     try {
         const role = await Role.find({role:'User'});
@@ -32,7 +33,7 @@ export const createUser = async(req, res , next) =>{
         throw new ApiError(500,'something went wrong while registring')
     }
 }
-
+// login contolerr
 export const checkUser = async(req, res ,next) =>{
     try {
         const user = await User.findOne({email:req.body.email}).populate("roles","role");
@@ -68,7 +69,7 @@ export const checkUser = async(req, res ,next) =>{
         throw new ApiError(500,error, 'something went wrong')
     }
 }
-
+// admin controller 
 
 export const createAdmin = async(req, res , next) =>{
     try {
@@ -93,7 +94,7 @@ export const createAdmin = async(req, res , next) =>{
         throw new ApiError(500,'something went wrong while registring')
     }
 }
-
+// mail controller to send the mail
 export const SendEmail = async (req,res,next)=>{
      const email = req.body.email;
      const user = await User.findOne({email:{$regex:'^' +email+'$', $options:'i'}});
@@ -159,7 +160,7 @@ export const SendEmail = async (req,res,next)=>{
       });
 }
 
-
+// reset password controller
 export const resetPassword = async (req,res,next) =>{
        const token = req.body.token;
        const newPassword = req.body.password;
