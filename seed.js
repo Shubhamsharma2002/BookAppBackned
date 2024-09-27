@@ -14,3 +14,7 @@ export const seedBooksData = async () => {
         console.log("Error: ", error);
     }
 }
+
+
+// command to seed the data
+// node src/index.js --seed
