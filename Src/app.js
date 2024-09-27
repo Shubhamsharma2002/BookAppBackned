@@ -5,6 +5,7 @@ import router from './Routes/Role.routes.js';
 import Authrouter from './Routes/Auth.routes.js';
 import cookieparser from'cookie-parser'
 import cors from "cors";
+import Bookrouter from './Routes/Book.routes.js';
 const server = express();
 
 
@@ -19,6 +20,7 @@ server.use(cors({
 }))
 server.use("/api/v1/role", router)
 server.use("/api/v1/user", Authrouter)
+server.use("/api/v1/book", Bookrouter)
 
 
 
